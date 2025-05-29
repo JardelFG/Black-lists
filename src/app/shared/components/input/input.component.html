@@ -1,0 +1,17 @@
+<div class="input-container" [ngClass]="elementClasses">
+  <label [for]="id()" class="input-label">{{ label() }}</label>
+  
+  <div class="input-field-wrapper">
+    <input
+      [id]="id()"
+      [placeholder]="placeholder()"
+      [value]="getValue()"
+      [disabled]="isDisabled()"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+      (input)="onInput($event)"
+      class="input-field"
+    />
+  </div>
+  <span class="input-error" *ngIf="hasError()">{{ errorMessage }}</span>
+</div>

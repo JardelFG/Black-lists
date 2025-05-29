@@ -1,0 +1,13 @@
+<div class="content">
+    <span>seleciona un fondo:</span>
+    <div class="background-options">
+      <div
+        *ngFor="let color of backgrounds"
+        class="color-box"
+        [style.background]="color"
+        [class.selected]="color === selectedBackground"
+        (click)="selectBackground(color)"
+      ></div>
+    </div>
+  </div>
+  

@@ -1,27 +1,58 @@
 # BlackListAO
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.19.
+Este proyecto es una aplicación Angular para gestionar listas personalizadas, creada con [Angular CLI](https://github.com/angular/angular-cli) versión 18.2.19.
 
-## Development server
+## Estructura del proyecto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```
+src/
+  index.html
+  main.ts
+  styles.sass
+  app/
+    app-routing.module.ts
+    app.component.ts
+    app.module.ts
+    features/
+      layout/
+    models/
+    pages/
+      home/
+    shared/
+      components/
+      Store/
+        actions/
+        reducers/
+        selectors/
+```
 
-## Code scaffolding
+## Características principales
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Gestión de listas**: Crea, elimina y administra listas personalizadas.
+- **Items en listas**: Añade, elimina y busca ítems dentro de cada lista.
+- **Selección de fondo**: Personaliza el fondo de cada lista.
+- **Persistencia**: El estado se guarda en `localStorage` usando un meta-reducer de NgRx.
+- **Interfaz moderna**: Utiliza Angular Material y estilos SASS personalizados.
+- **Componentes reutilizables**: Inputs, sidebar, tags, selectores de color, etc.
 
-## Build
+## Instalación
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clona el repositorio.
+2. Ejecuta `npm install` para instalar las dependencias.
 
-## Running unit tests
+## Servidor de desarrollo
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Ejecuta `ng serve` para iniciar el servidor de desarrollo. Navega a [http://localhost:4200/](http://localhost:4200/). La aplicación se recargará automáticamente si modificas algún archivo fuente.
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Estado global y persistencia
 
-## Further help
+El estado de las listas se maneja con NgRx Store y se persiste automáticamente en `localStorage` usando el meta-reducer [`localStorageMetaReducer`](src/app/Store/reducers/localStorage.metareducer.ts).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Ayuda adicional
+
+Para más ayuda sobre Angular CLI usa `ng help` o visita la [documentación oficial](https://angular.dev/tools/cli).
+
+---
+
+Desarrollado por [Jardel Figueroa L.S].

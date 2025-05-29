@@ -1,0 +1,112 @@
+
+// Variables
+$input-height: 45px
+$input-padding: 15px
+$border-radius: 6px
+$error-color: #ff0000
+$transition-default: all 0.2s ease-in-out
+$font-size-normal: 1rem
+$font-size-small: 0.75rem
+$element-spacing: 10px
+$label-position-default: 15px
+$label-position-active: 5px
+
+:host
+  width: 100%
+  display: block
+  position: relative
+  margin-bottom: $element-spacing
+
+  .input-container
+    position: relative
+    width: 100%
+
+    &.has-error
+      .input-field
+        border: 1px solid $error-color !important
+
+    &.is-focused, &.not-empty
+      .input-label
+        top: $label-position-active
+        font-size: $font-size-small
+        transition: $transition-default
+
+    &.disabled
+      .input-field
+        background: #e3dcd6
+        border-color: #8c7a71
+        opacity: 0.75
+        cursor: not-allowed
+
+    .input-label
+      position: absolute
+      left: $input-padding
+      top: $label-position-default
+      text-transform: capitalize
+      color: #8c7a71
+      font-size: $font-size-normal
+      font-weight: 400
+      opacity: 0.75
+      transition: $transition-default
+      user-select: none
+      z-index: 1
+      pointer-events: none
+
+    .input-field-wrapper
+      position: relative
+      width: 100%
+
+      .input-field
+        width: calc(100% - #{$input-padding * 2})
+        height: $input-height
+        padding: 5px $input-padding 0 $input-padding
+        background: #e3dcd6
+        border: 1px solid #8c7a71
+        border-radius: $border-radius
+        font-size: $font-size-normal
+        font-weight: 400
+        caret-color: #8c7a71
+
+        &:focus
+          outline: none
+          border-color: #c0aca3
+
+        &:disabled
+          cursor: not-allowed
+
+        &[type="number"]::-webkit-inner-spin-button,
+        &[type="number"]::-webkit-outer-spin-button
+          -webkit-appearance: none
+          margin: 0
+
+        &[type="number"]
+          -moz-appearance: textfield
+
+      .toggle-password
+        position: absolute
+        right: 10px
+        top: 50%
+        transform: translateY(-50%)
+        background: none
+        border: none
+        cursor: pointer
+        color: #8c7a71
+        display: flex
+        align-items: center
+        justify-content: center
+
+        &:focus
+          outline: none
+
+    .input-error
+      position: absolute
+      left: 5px
+      bottom: -20px
+      height: auto
+      min-height: 16px
+      color: $error-color
+      font-size: $font-size-small
+      font-weight: 400
+      transition: all 0.3s ease-in-out
+      z-index: 5
+      width: 100%

@@ -1,0 +1,42 @@
+<dialog #confirmDialog>
+  <h2>Estas seguro que quieres eliminar esta lista?</h2>
+  <form method="dialog">
+    <app-button
+      text="Cancelar"
+    />
+    <app-button
+      text="Eliminar"
+      (onClick)="onConfirmDeleteList()"
+    />
+  </form>
+</dialog>
+<div class="sidebar" [class.collapsed]="collapsed">
+  
+    <div class="sidebar-header">
+      <div class="logo" [routerLink]="['/']">
+        <span class="logo-text" *ngIf="!collapsed">Black Lists</span>
+      </div>
+      <button class="toggle-btn" (click)="toggleSidebar()">
+        <mat-icon>{{ collapsed ? 'chevron_right' : 'chevron_left' }}</mat-icon>
+      </button>
+    </div>
+  
+    <div class="sidebar-content">
+      <ul class="nav-list">
+        <li class="nav-item" (click)="requestNewList()">
+          <mat-icon>{{ 'add' }}</mat-icon>
+          <span class="nav-label" *ngIf="!collapsed">Nueva lista</span>
+        </li>
+        <li *ngFor="let data of lists$ | async" 
+            class="nav-item" 
+            [routerLink]="['/list', data.route]"
+            routerLinkActive="active">
+          <mat-icon>{{ data.icon ? data.icon : 'list_alt' }}</mat-icon>
+          <span class="nav-label mask-image" title='{{data.title}}' *ngIf="!collapsed">{{ data.title }}</span>
+          <span class="nav-btn-delete" (click)="openDialog(confirmDialog, data.id)">
+            <mat-icon>{{ 'close' }}</mat-icon>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>

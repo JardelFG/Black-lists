@@ -1,0 +1,30 @@
+<div class="content">
+    <h3>Creando nueva lista</h3>
+    <div class="form" [formGroup]="form">
+      <div class="request">
+        <app-input
+          id="title"
+          type="text"
+          placeholder="titulo de lista"
+          formControlName="title"
+          [errors]="validationMessages.title"
+        />
+      </div>
+      <div class="request">
+        <app-bg-selector
+          (backgroundChange)="onBackgroundChange($event)"
+        />
+      </div>
+    </div>
+  
+    <div class="buttons">
+      <app-button [text]="'Cancelar'" mat-dialog-close [mat-dialog-close]="false">
+      </app-button>
+      <app-button
+        [text]="'Confirmar'"
+        (click)="confirmRequestNewList()"
+        [disabled]="!isValid()"
+      ></app-button>
+    </div>
+  </div>
+  

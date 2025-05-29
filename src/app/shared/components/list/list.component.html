@@ -1,0 +1,29 @@
+<main
+  class="list-container"
+  [ngStyle]="{ background: list.background }"
+  *ngIf="list$ | async as list"
+>
+  <header class="list-header">
+    <h1>{{ list.title }}</h1>
+    <div class="add-list-form">
+      <input [(ngModel)]="name" maxlength="40" placeholder="name to add" />
+      <button (click)="addItem()">Añadir</button>
+      <button (click)="clearListItems()">Limpiar Lista</button>
+    </div>
+  </header>
+  <header class="list-header">
+    <input type="text" [(ngModel)]="searchTerm" (keydown)="searchItems(list.items)" placeholder="Buscar ítem..." />
+  </header>
+
+  <section>
+  </section>
+  
+  <section class="list">
+    <div *ngFor="let item of (filteredItems.length ? filteredItems : list.items)" class="card">
+      <app-display-tag
+        [title]="item.name"
+        (click)="removeItem(item)"
+      />
+    </div>
+  </section>
+</main>

@@ -1,0 +1,25 @@
+.content
+  display: flex
+  flex-direction: column
+  width: 100%
+
+  .background-options 
+    display: flex
+    gap: 1rem
+    width: 100%
+    justify-content: space-between
+    margin: 1rem 0
+
+  .color-box 
+    width: 50px
+    height: 50px
+    border-radius: 6px
+    cursor: pointer
+    transition: border 0.2s ease
+
+    &:hover
+      transform: scale(1.2)
+
+  .color-box.selected
+    transform: scale(.8)
+
